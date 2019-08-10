@@ -43,11 +43,17 @@ class Snake:
             if keys[pygame.K_DOWN] and self.head.direction != UP:
                 self.head.direction = DOWN
                 self.turns.append(Cube(self.head.x, self.head.y, self.head.direction))
+
         for c in self.body:
             for t in self.turns:
                 if t.x == c.x and t.y == c.y:
                     c.direction = t.direction 
-
+        
+        for t in self.turns:
+            try:
+                print(self.body.index(t))
+            except (Exception):
+                self.turns.remove(t)
         
 
         for c in self.body:
