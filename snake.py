@@ -50,12 +50,13 @@ class Snake:
                     c.direction = t.direction 
         
         for t in self.turns:
-            try:
-                print(self.body.index(t))
-            except (Exception):
+            flag = False
+            for b in self.body:
+                if t.x == b.x and t.y == b.y:
+                    flag = True
+            if not flag:
                 self.turns.remove(t)
         
-
         for c in self.body:
             if c.direction == LEFT:
                 c.x -= 50
